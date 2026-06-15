@@ -19,6 +19,8 @@
 
 Find the un-audited MCP servers, Claude skills, sub-agents and Cursor rules on your hosts — score them, map them to MITRE ATT&CK and the OWASP LLM Top 10, and hand the results to a human *or an agent* for remediation.
 
+Disclaimer: use on authorized systems only
+
 </div>
 
 ---
