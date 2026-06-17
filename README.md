@@ -22,7 +22,6 @@ Find the un-audited MCP servers, Claude skills, sub-agents and Cursor rules on y
 ![version](https://img.shields.io/badge/version-0.1.0-blue)
 ![license](https://img.shields.io/badge/license-Apache--2.0-green)
 ![platform](https://img.shields.io/badge/platform-x86--64%20Linux-lightgrey)
-![binary](https://img.shields.io/badge/build-single%20static%20binary-orange)
 ![deps](https://img.shields.io/badge/runtime%20deps-none-brightgreen)
 
 *Use on authorized systems only.*
