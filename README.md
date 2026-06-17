@@ -19,9 +19,28 @@
 
 Find the un-audited MCP servers, Claude skills, sub-agents and Cursor rules on your hosts — score them, map them to MITRE ATT&CK and the OWASP LLM Top 10, and hand the results to a human *or an agent* for remediation.
 
-Disclaimer: use on authorized systems only
+![version](https://img.shields.io/badge/version-0.1.0-blue)
+![license](https://img.shields.io/badge/license-Apache--2.0-green)
+![platform](https://img.shields.io/badge/platform-x86--64%20Linux-lightgrey)
+![binary](https://img.shields.io/badge/build-single%20static%20binary-orange)
+![deps](https://img.shields.io/badge/runtime%20deps-none-brightgreen)
+
+*Use on authorized systems only.*
 
 </div>
+
+---
+
+## Why ShadowStack
+
+- 🔎 **Two engines, one binary.** Scan the network for live MCP servers *and* audit the local Claude/Cursor AI surface on disk — including running stdio MCP processes — from the same zero-dependency static binary.
+- 🎯 **Risk, not just inventory.** Every artifact is scored High/Medium/Low and every host/file is ranked into a `none → critical` band, so you triage the genuinely dangerous targets first instead of reading a wall of raw output.
+- 🧭 **Standards-mapped out of the box.** Each finding carries an OWASP LLM Top 10 (2025) reference, a MITRE ATT&CK technique, and concrete remediation text — through *every* output format.
+- 🔌 **Drops into your pipeline.** `ascii` for humans; `json`/`ndjson`/`sarif`/`csv` for SIEMs, GitHub code-scanning, spreadsheets, and AI remediation agents — all with stable rule IDs and dedup fingerprints.
+- 🔁 **Built for continuous use.** Baseline/delta diffing, CI exit-code gating, allow-list suppression, version-controllable scan profiles, and resumable sweeps.
+- 📦 **Trivial to deploy.** One statically-linked binary, no glibc / OpenSSL / runtime to install — `curl`, `chmod +x`, run.
+
+> **In one line:** ShadowStack turns invisible, un-governed AI infrastructure into a scored, standards-mapped, machine-ingestible inventory you can act on.
 
 ---
 
@@ -48,7 +67,8 @@ Disclaimer: use on authorized systems only
 - [Output formats](#output-formats)
 - [Exit codes](#exit-codes)
 - [Usage recipes](#usage-recipes)
-- [License & status](#license--status)
+- [Supported platforms & limitations](#supported-platforms--limitations)
+- [License](#license)
 
 ---
 
@@ -176,7 +196,19 @@ The ranking (highest first, ties broken on the target key for reproducible outpu
 
 ## Install
 
-ShadowStack is a single static binary — drop it on a box and run it.
+ShadowStack ships as a single, statically-linked binary with **zero runtime dependencies** — no glibc, no OpenSSL, no interpreter. Download it, verify the checksum, and run:
+
+```sh
+# verify integrity
+sha256sum -c shadowstack-0.1.0-x86_64-linux.sha256
+
+# install onto PATH
+chmod +x shadowstack-0.1.0-x86_64-linux
+sudo mv shadowstack-0.1.0-x86_64-linux /usr/local/bin/shadowstack
+
+shadowstack --version
+```
+
 
 ## Quick start
 
@@ -194,6 +226,8 @@ shadowstack -p skills --fail-on high -f sarif -o results.sarif
 > Banner and progress go to **stderr**; the report goes to **stdout** (or `--output`). 
 
 ## Example output
+
+Every scan can be rendered in five formats — the same findings, shaped for different consumers: **`ascii`** (the default human-readable report: full inventory + risk ranking + findings table), **`json`** (one complete document — inventory, per-target risk, and findings with identity + mappings — for `jq`, dashboards, and AI agents), **`ndjson`** (one finding per line for SIEM/log pipelines like Splunk, Elastic, and Loki), **`sarif`** (SARIF 2.1.0 for GitHub code-scanning and SAST tooling), and **`csv`** (RFC-4180 rows for spreadsheet triage and ticketing imports). The examples below walk through each.
 
 A single MCP host can hide an enormous amount of risk. Below is a real (lightly trimmed) `ascii` report from one server — ShadowStack turned an `initialize` handshake into **64 findings** across the tool, resource, instruction, capability, and correlation surfaces, and ranked the host `critical`.
 
@@ -556,6 +590,15 @@ shadowstack -p mcp --config ci-mcp.toml --workers 8
 # Audit the local AI surface and gate CI on High findings
 shadowstack -p skills --fail-on high -f sarif -o results.sarif
 ```
+
+## Supported platforms & limitations
+
+| | |
+|---|---|
+| **Prebuilt binary** | x86-64 Linux, statically linked — runs on any distribution, no dependencies. |
+| **Build from source** | Portable across targets the Rust toolchain supports. |
+| **Live process inventory** | Linux-only (reads `/proc`). On other OSes the process list is empty; the rest of the scan is unaffected. |
+| **Discovery scope** | IPv4 (CIDR / host / DNS→IPv4). IPv6 ranges are not yet enumerated. |
 
 ## License
 
