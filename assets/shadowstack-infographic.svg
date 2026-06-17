@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#0e1530"/>
+    </linearGradient>
+    <linearGradient id="wordmark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e6edf3"/>
+      <stop offset="0.55" stop-color="#e6edf3"/>
+      <stop offset="0.55" stop-color="#2dd4bf"/>
+      <stop offset="1" stop-color="#4f9cf9"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#2dd4bf"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="0.5" y="0.5" width="1199" height="899" fill="none" stroke="#1d2742" stroke-width="1"/>
+
+  <!-- ===================== HEADER ===================== -->
+  <!-- stacked-shield logo -->
+  <g transform="translate(56,42)">
+    <path d="M34 2 L64 16 V40 C64 58 50 70 34 76 C18 70 4 58 4 40 V16 Z" fill="#101a33" stroke="#2dd4bf" stroke-width="2.5"/>
+    <rect x="18" y="24" width="32" height="8" rx="2" fill="#4f9cf9"/>
+    <rect x="18" y="36" width="32" height="8" rx="2" fill="#2dd4bf"/>
+    <rect x="18" y="48" width="32" height="8" rx="2" fill="#f5a623"/>
+  </g>
+
+  <text x="148" y="78" font-size="46" font-weight="800" letter-spacing="2" fill="url(#wordmark)">SHADOWSTACK</text>
+  <text x="150" y="108" font-size="17" fill="#94a3c4">Discovery &amp; risk analytics for shadow-AI infrastructure</text>
+
+  <!-- header pills -->
+  <g font-size="13" font-weight="600">
+    <rect x="893" y="40" width="150" height="28" rx="14" fill="#10243a" stroke="#2dd4bf" stroke-width="1"/>
+    <circle cx="912" cy="54" r="4" fill="#2dd4bf"/>
+    <text x="924" y="58" fill="#9fe6da">single static binary</text>
+    <rect x="1051" y="40" width="96" height="28" rx="14" fill="#1a2236" stroke="#3a466b" stroke-width="1"/>
+    <text x="1066" y="58" fill="#c3cde6">Apache-2.0</text>
+  </g>
+
+  <line x1="56" y1="132" x2="1144" y2="132" stroke="#23304f" stroke-width="1.5"/>
+
+  <!-- ===================== BAND 1 · DISCOVER ===================== -->
+  <g>
+    <circle cx="69" cy="166" r="14" fill="#2dd4bf"/>
+    <text x="69" y="171" font-size="16" font-weight="800" fill="#06231f" text-anchor="middle">1</text>
+    <text x="92" y="172" font-size="20" font-weight="800" fill="#2dd4bf" letter-spacing="1">DISCOVER</text>
+    <text x="208" y="172" font-size="16" fill="#94a3c4">·  two scan engines, one binary</text>
+  </g>
+
+  <!-- MCP card -->
+  <g>
+    <rect x="56" y="190" width="528" height="118" rx="14" fill="#131a2e" stroke="#2a3354" stroke-width="1.5"/>
+    <circle cx="100" cy="232" r="22" fill="#0e1b30" stroke="#4f9cf9" stroke-width="2"/>
+    <circle cx="100" cy="232" r="22" fill="none" stroke="#4f9cf9" stroke-width="1.2"/>
+    <ellipse cx="100" cy="232" rx="9" ry="22" fill="none" stroke="#4f9cf9" stroke-width="1.2"/>
+    <line x1="78" y1="232" x2="122" y2="232" stroke="#4f9cf9" stroke-width="1.2"/>
+    <line x1="82" y1="221" x2="118" y2="221" stroke="#4f9cf9" stroke-width="1.2"/>
+    <line x1="82" y1="243" x2="118" y2="243" stroke="#4f9cf9" stroke-width="1.2"/>
+    <text x="140" y="223" font-size="19" font-weight="700" fill="#e6edf3">MCP servers — the network</text>
+    <text x="140" y="250" font-size="13.5" fill="#9aa7c7">JSON-RPC <tspan fill="#8fb6f7" font-family="monospace">initialize</tspan> · enumerate tools / resources / prompts</text>
+    <text x="140" y="272" font-size="13.5" fill="#9aa7c7">CIDR · host · DNS  ·  HTTP + TLS banner capture</text>
+  </g>
+
+  <!-- Skills card -->
+  <g>
+    <rect x="616" y="190" width="528" height="118" rx="14" fill="#131a2e" stroke="#2a3354" stroke-width="1.5"/>
+    <g transform="translate(656,212)" fill="none" stroke="#f5a623" stroke-width="2" stroke-linejoin="round">
+      <path d="M4 10 H18 L24 4 H40 V36 H4 Z"/>
+      <path d="M4 14 H44 L40 36 H4 Z" fill="#1a1c10"/>
+    </g>
+    <text x="700" y="223" font-size="19" font-weight="700" fill="#e6edf3">Skills &amp; rules — disk + /proc</text>
+    <text x="700" y="250" font-size="13.5" fill="#9aa7c7">Claude skills · sub-agents · CLAUDE.md · Cursor / Windsurf rules</text>
+    <text x="700" y="272" font-size="13.5" fill="#9aa7c7">MCP configs · hooks  ·  live stdio MCP processes</text>
+  </g>
+
+  <line x1="600" y1="310" x2="600" y2="350" stroke="#2dd4bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===================== BAND 2 · ANALYZE ===================== -->
+  <g>
+    <circle cx="69" cy="378" r="14" fill="#a78bfa"/>
+    <text x="69" y="383" font-size="16" font-weight="800" fill="#1a1140" text-anchor="middle">2</text>
+    <text x="92" y="384" font-size="20" font-weight="800" fill="#a78bfa" letter-spacing="1">EVALUATE · ENRICH · SCORE</text>
+    <text x="430" y="384" font-size="16" fill="#94a3c4">·  rank what's actually dangerous</text>
+  </g>
+
+  <rect x="56" y="400" width="1088" height="176" rx="14" fill="#10162a" stroke="#2a3354" stroke-width="1.5"/>
+
+  <!-- step 1 -->
+  <rect x="86" y="424" width="256" height="68" rx="10" fill="#161d33" stroke="#3a466b" stroke-width="1"/>
+  <text x="104" y="453" font-size="16" font-weight="700" fill="#e6edf3">RULES ENGINE</text>
+  <text x="104" y="476" font-size="12.5" fill="#9aa7c7">severity: <tspan fill="#ff6b6b" font-weight="700">High</tspan> · <tspan fill="#fb923c" font-weight="700">Med</tspan> · <tspan fill="#facc15" font-weight="700">Low</tspan></text>
+  <line x1="342" y1="458" x2="392" y2="458" stroke="#2dd4bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- step 2 -->
+  <rect x="396" y="424" width="300" height="68" rx="10" fill="#161d33" stroke="#3a466b" stroke-width="1"/>
+  <text x="414" y="453" font-size="16" font-weight="700" fill="#e6edf3">MAP &amp; ENRICH</text>
+  <text x="414" y="476" font-size="12.5" fill="#9aa7c7">OWASP LLM Top 10 · MITRE ATT&amp;CK · fix</text>
+  <line x1="696" y1="458" x2="746" y2="458" stroke="#2dd4bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- step 3 -->
+  <rect x="750" y="424" width="288" height="68" rx="10" fill="#161d33" stroke="#3a466b" stroke-width="1"/>
+  <text x="768" y="453" font-size="16" font-weight="700" fill="#e6edf3">WEIGHTED RISK</text>
+  <text x="768" y="476" font-size="12.5" fill="#9aa7c7">score = 10·H + 4·M + 1·L  →  per target</text>
+
+  <!-- risk band legend -->
+  <text x="86" y="544" font-size="13" font-weight="700" fill="#94a3c4" letter-spacing="1">RISK BAND</text>
+  <g font-size="12.5" font-weight="600">
+    <rect x="190" y="528" width="160" height="28" rx="14" fill="#13241c" stroke="#23433a"/>
+    <circle cx="210" cy="542" r="5" fill="#3ddc97"/><text x="224" y="546" fill="#c7e9d8">none · 0</text>
+    <rect x="360" y="528" width="160" height="28" rx="14" fill="#1a2418" stroke="#2f4a26"/>
+    <circle cx="380" cy="542" r="5" fill="#a3e635"/><text x="394" y="546" fill="#d8ecc0">low · 1–3</text>
+    <rect x="530" y="528" width="170" height="28" rx="14" fill="#272218" stroke="#4d4326"/>
+    <circle cx="550" cy="542" r="5" fill="#facc15"/><text x="564" y="546" fill="#ecdfb6">medium · 4–9</text>
+    <rect x="710" y="528" width="166" height="28" rx="14" fill="#2a1f15" stroke="#553a22"/>
+    <circle cx="730" cy="542" r="5" fill="#fb923c"/><text x="744" y="546" fill="#eccdb0">high · 10–24</text>
+    <rect x="886" y="528" width="180" height="28" rx="14" fill="#2a1717" stroke="#552727"/>
+    <circle cx="906" cy="542" r="5" fill="#ef4444"/><text x="920" y="546" fill="#eeb6b6">critical · 25+</text>
+  </g>
+
+  <line x1="600" y1="578" x2="600" y2="618" stroke="#2dd4bf" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ===================== BAND 3 · DELIVER ===================== -->
+  <g>
+    <circle cx="69" cy="646" r="14" fill="#4f9cf9"/>
+    <text x="69" y="651" font-size="16" font-weight="800" fill="#06182f" text-anchor="middle">3</text>
+    <text x="92" y="652" font-size="20" font-weight="800" fill="#4f9cf9" letter-spacing="1">DELIVER</text>
+    <text x="194" y="652" font-size="16" fill="#94a3c4">·  five formats → any consumer</text>
+  </g>
+
+  <rect x="56" y="668" width="1088" height="180" rx="14" fill="#10162a" stroke="#2a3354" stroke-width="1.5"/>
+
+  <text x="600" y="702" text-anchor="middle" font-size="17" font-family="monospace" letter-spacing="1" fill="#9fe6da">ascii &#160;·&#160; json &#160;·&#160; ndjson &#160;·&#160; sarif &#160;·&#160; csv</text>
+
+  <!-- consumer cards -->
+  <g font-weight="600">
+    <!-- Human -->
+    <rect x="74" y="720" width="200" height="108" rx="10" fill="#161d33" stroke="#3a466b"/>
+    <rect x="92" y="736" width="60" height="22" rx="6" fill="#0e2233"/><text x="122" y="751" text-anchor="middle" font-size="12" font-family="monospace" fill="#7fd8ff">ascii</text>
+    <text x="92" y="784" font-size="15" font-weight="700" fill="#e6edf3">Human</text>
+    <text x="92" y="806" font-size="12" fill="#9aa7c7">terminal report,</text>
+    <text x="92" y="822" font-size="12" fill="#9aa7c7">full inventory</text>
+
+    <!-- AI agent -->
+    <rect x="288" y="720" width="200" height="108" rx="10" fill="#161d33" stroke="#3a466b"/>
+    <rect x="306" y="736" width="56" height="22" rx="6" fill="#0e2233"/><text x="334" y="751" text-anchor="middle" font-size="12" font-family="monospace" fill="#7fd8ff">json</text>
+    <text x="306" y="784" font-size="15" font-weight="700" fill="#e6edf3">AI agent</text>
+    <text x="306" y="806" font-size="12" fill="#9aa7c7">full doc · jq ·</text>
+    <text x="306" y="822" font-size="12" fill="#9aa7c7">auto-remediation</text>
+
+    <!-- SIEM -->
+    <rect x="502" y="720" width="200" height="108" rx="10" fill="#161d33" stroke="#3a466b"/>
+    <rect x="520" y="736" width="72" height="22" rx="6" fill="#0e2233"/><text x="556" y="751" text-anchor="middle" font-size="12" font-family="monospace" fill="#7fd8ff">ndjson</text>
+    <text x="520" y="784" font-size="15" font-weight="700" fill="#e6edf3">SIEM</text>
+    <text x="520" y="806" font-size="12" fill="#9aa7c7">Splunk · Elastic</text>
+    <text x="520" y="822" font-size="12" fill="#9aa7c7">· Loki</text>
+
+    <!-- Code scanning -->
+    <rect x="716" y="720" width="200" height="108" rx="10" fill="#161d33" stroke="#3a466b"/>
+    <rect x="734" y="736" width="62" height="22" rx="6" fill="#0e2233"/><text x="765" y="751" text-anchor="middle" font-size="12" font-family="monospace" fill="#7fd8ff">sarif</text>
+    <text x="734" y="784" font-size="15" font-weight="700" fill="#e6edf3">Code scanning</text>
+    <text x="734" y="806" font-size="12" fill="#9aa7c7">GitHub · Azure</text>
+    <text x="734" y="822" font-size="12" fill="#9aa7c7">DevOps · SAST</text>
+
+    <!-- Triage -->
+    <rect x="930" y="720" width="200" height="108" rx="10" fill="#161d33" stroke="#3a466b"/>
+    <rect x="948" y="736" width="52" height="22" rx="6" fill="#0e2233"/><text x="974" y="751" text-anchor="middle" font-size="12" font-family="monospace" fill="#7fd8ff">csv</text>
+    <text x="948" y="784" font-size="15" font-weight="700" fill="#e6edf3">Triage</text>
+    <text x="948" y="806" font-size="12" fill="#9aa7c7">spreadsheets ·</text>
+    <text x="948" y="822" font-size="12" fill="#9aa7c7">ticket imports</text>
+  </g>
+
+  <!-- footer strip -->
+  <text x="600" y="878" text-anchor="middle" font-size="13.5" fill="#7e8cb0">Every finding carries a stable <tspan fill="#9fe6da" font-family="monospace">rule_id</tspan> · dedup <tspan fill="#9fe6da" font-family="monospace">fingerprint</tspan> · OWASP/MITRE reference · remediation — in <tspan font-weight="700" fill="#c3cde6">every</tspan> format.</text>
+</svg>

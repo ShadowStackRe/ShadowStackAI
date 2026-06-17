@@ -22,9 +22,14 @@ Find the un-audited MCP servers, Claude skills, sub-agents and Cursor rules on y
 ![version](https://img.shields.io/badge/version-0.1.0-blue)
 ![license](https://img.shields.io/badge/license-Apache--2.0-green)
 ![platform](https://img.shields.io/badge/platform-x86--64%20Linux-lightgrey)
+![binary](https://img.shields.io/badge/build-single%20static%20binary-orange)
 ![deps](https://img.shields.io/badge/runtime%20deps-none-brightgreen)
 
 *Use on authorized systems only.*
+
+<br/>
+
+<img src="assets/shadowstack-infographic.svg" alt="ShadowStack at a glance: two scan engines (MCP servers on the network, Skills & rules on disk + /proc) feed a rules engine that scores findings High/Medium/Low, maps them to OWASP LLM Top 10 and MITRE ATT&CK, ranks each target into none→critical risk bands, and delivers results in five formats (ascii, json, ndjson, sarif, csv) to humans, AI agents, SIEMs, code-scanning, and triage." width="900"/>
 
 </div>
 
@@ -39,7 +44,16 @@ Find the un-audited MCP servers, Claude skills, sub-agents and Cursor rules on y
 - 🔁 **Built for continuous use.** Baseline/delta diffing, CI exit-code gating, allow-list suppression, version-controllable scan profiles, and resumable sweeps.
 - 📦 **Trivial to deploy.** One statically-linked binary, no glibc / OpenSSL / runtime to install — `curl`, `chmod +x`, run.
 
-> **In one line:** ShadowStack turns invisible, un-governed AI infrastructure into a scored, standards-mapped, machine-ingestible inventory you can act on.
+## Why shadow AI is a problem
+
+AI infrastructure is being deployed *inside* organizations faster than security teams can govern it:
+
+- **It's invisible to traditional tooling.** EDR/CASB products reason about packets and processes from a *user's* perspective. They don't enumerate an MCP server's exposed tool surface, read a sub-agent's tool grants, or notice that a `CLAUDE.md` quietly instructs every session to exfiltrate to a webhook. The AI surface stays un-inventoried until something already went wrong on the wire.
+- **It's un-audited and un-managed.** Developers stand up MCP servers on dev ports, drop skills into `~/.claude`, and wire Cursor rules into repos — none of it known to IT, none of it access-controlled, much of it cleartext on the LAN. That's *shadow AI*: real capability, zero governance.
+- **It's a live injection & RCE surface.** Skills, sub-agents and server `instructions` fields are natural-language code that an LLM executes with the user's privileges. They can carry prompt/command injection, meta-context that hijacks the model's reasoning, embedded secrets, over-broad tool grants, auto-approve directives, and outright RCE / persistence / privilege-escalation payloads — often *concealed* with zero-width characters, bidi overrides, Unicode tag-blocks, ANSI escapes, or base64 blobs.
+- **Compromise hides here well.** A malicious skill or a rug-pull MCP server (one that mutates its tool surface *after* the client approves it) is an attractive, low-noise foothold. Inter-agent persuasion can erode safety boundaries that each agent enforces in isolation.
+
+ShadowStack exists to make that surface **discoverable, rankable, and remediable** before it's abused.
 
 ---
 
@@ -82,16 +96,6 @@ ShadowStack is a single, dependency-light static binary that **inventories AI-ag
 
 Every run produces an **inventory** (what exists) and a **findings list** (what's risky), rendered for a human (ASCII) or a machine (JSON / NDJSON / SARIF / CSV). All output carries stable rule IDs, dedup fingerprints, remediation text, and ATT&CK/OWASP references — so results are equally ingestible by a SIEM, a code-scanning dashboard, or an AI agent tasked with remediation.
 
-## Why shadow AI is a problem
-
-AI infrastructure is being deployed *inside* organizations faster than security teams can govern it:
-
-- **It's invisible to traditional tooling.** EDR/CASB products reason about packets and processes from a *user's* perspective. They don't enumerate an MCP server's exposed tool surface, read a sub-agent's tool grants, or notice that a `CLAUDE.md` quietly instructs every session to exfiltrate to a webhook. The AI surface stays un-inventoried until something already went wrong on the wire.
-- **It's un-audited and un-managed.** Developers stand up MCP servers on dev ports, drop skills into `~/.claude`, and wire Cursor rules into repos — none of it known to IT, none of it access-controlled, much of it cleartext on the LAN. That's *shadow AI*: real capability, zero governance.
-- **It's a live injection & RCE surface.** Skills, sub-agents and server `instructions` fields are natural-language code that an LLM executes with the user's privileges. They can carry prompt/command injection, meta-context that hijacks the model's reasoning, embedded secrets, over-broad tool grants, auto-approve directives, and outright RCE / persistence / privilege-escalation payloads — often *concealed* with zero-width characters, bidi overrides, Unicode tag-blocks, ANSI escapes, or base64 blobs.
-- **Compromise hides here well.** A malicious skill or a rug-pull MCP server (one that mutates its tool surface *after* the client approves it) is an attractive, low-noise foothold. Inter-agent persuasion can erode safety boundaries that each agent enforces in isolation.
-
-ShadowStack exists to make that surface **discoverable, rankable, and remediable** before it's abused.
 
 ## How it works
 
